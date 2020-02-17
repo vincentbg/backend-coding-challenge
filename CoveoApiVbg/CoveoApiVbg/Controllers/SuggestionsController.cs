@@ -30,7 +30,7 @@ namespace CoveoApiVbg.Controllers
             {
                 rng += latitude.ToString();
             }
-             List<Suggestion> suggestions = await suggestionsRepo.GetAll();
+             List<Ville> suggestions = await suggestionsRepo.GetAll();
             //suggestions.Add(new Suggestion { Id = 1, Latitude = 0, Longitude = 0, Name = "London", Score = 1 });
             //suggestions.Add(new Suggestion { Id = 2, Latitude = 0, Longitude = 0, Name = "Quebec", Score = 0 });
             

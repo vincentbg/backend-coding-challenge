@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace CoveoApiVbg.Data
 {
-    public class SuggestionsRepository : IRepository
+    public class VillesRepository : IRepository
     {
         private IDBcontext context { get; set; }
        
-        public SuggestionsRepository(IDBcontext context)
+        public VillesRepository(IDBcontext context)
         {
             this.context = context;
             
         }
 
-        public async Task<Suggestion> Get(string name)
+        public async Task<List<Ville>> Get(string name)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<List<Suggestion>> GetAll()
+        public async Task<List<Ville>> GetAll()
         {
             return await context.GetAll();
         }

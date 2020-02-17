@@ -31,7 +31,7 @@ namespace CoveoApiVbg
             services.AddControllers();
             services.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
             services.AddScoped<IDBcontext, DBcontextInMemory>();
-            services.AddScoped<IRepository, SuggestionsRepository>();
+            services.AddScoped<IRepository, VillesRepository>();
             services.AddScoped<IMyDependency, MyDependency>();
 
 

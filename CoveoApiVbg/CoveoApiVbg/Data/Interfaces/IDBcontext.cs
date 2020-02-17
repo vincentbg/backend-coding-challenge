@@ -6,7 +6,7 @@ namespace CoveoApiVbg.Data
 {
     public interface IDBcontext
     {
-        Task<List<Suggestion>> GetAll();
-        Task<Suggestion> Get(string name);
+        Task<List<Ville>> GetAll();
+        Task<List<Ville>> Get(string name);
     }
 }
