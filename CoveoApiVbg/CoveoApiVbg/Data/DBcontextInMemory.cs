@@ -1,4 +1,5 @@
-﻿using CoveoApiVbg.Models;
+﻿using CoveoApiVbg.Helper;
+using CoveoApiVbg.Models;
 using Newtonsoft.Json;
 using OfficeOpenXml;
 using System;
@@ -58,13 +59,13 @@ namespace CoveoApiVbg.Data
                     for(int i = 2; i <= totalRows; ++i)
                     {
                         Ville villePresente = new Ville();
-                        villePresente.Id = Convert.ToInt32(firstWorksheet.Cells[i, 1].Value.ToString());
-                        villePresente.Name = firstWorksheet.Cells[i, 2].Value.ToString();
-                        villePresente.Ascii = firstWorksheet.Cells[i, 3].Value.ToString();
-                        villePresente.Latitude = float.Parse(firstWorksheet.Cells[i, 5].Value.ToString(), CultureInfo.InvariantCulture);
-                        villePresente.Longitude = float.Parse(firstWorksheet.Cells[i, 6].Value.ToString(), CultureInfo.InvariantCulture);
-                        villePresente.Country = firstWorksheet.Cells[i, 9].Value.ToString();
-                        villePresente.Tz = firstWorksheet.Cells[i, 18].Value.ToString();
+                        villePresente.Id = firstWorksheet.Cells[i, 1].Value == null ?  0 :  firstWorksheet.Cells[i, 1].Value.ToString().ParseInt();
+                        villePresente.Name = firstWorksheet.Cells[i, 2].Value == null ? string.Empty : firstWorksheet.Cells[i, 2].Value.ToString();
+                        villePresente.Ascii = firstWorksheet.Cells[i, 3].Value == null ? string.Empty : firstWorksheet.Cells[i, 3].Value.ToString();
+                        villePresente.Latitude = firstWorksheet.Cells[i, 5].Value == null ? float.MinValue : (float)firstWorksheet.Cells[i, 5].Value.ToString().ParseNullableFloat();
+                        villePresente.Longitude = firstWorksheet.Cells[i, 6].Value == null ? float.MinValue : (float)firstWorksheet.Cells[i, 6].Value.ToString().ParseNullableFloat();
+                        villePresente.Country = firstWorksheet.Cells[i, 9].Value == null ? string.Empty : firstWorksheet.Cells[i, 9].Value.ToString();
+                        villePresente.Tz = firstWorksheet.Cells[i, 18].Value == null ? string.Empty : firstWorksheet.Cells[i, 18].Value.ToString();
 
                         villes.Add(villePresente);
                     }
