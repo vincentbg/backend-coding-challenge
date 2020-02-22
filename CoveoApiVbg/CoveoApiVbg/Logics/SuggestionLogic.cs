@@ -1,4 +1,6 @@
-﻿using CoveoApiVbg.Interfaces;
+﻿using CoveoApiVbg.Data;
+using CoveoApiVbg.Interfaces;
+using CoveoApiVbg.Models;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,35 @@ namespace CoveoApiVbg.Logics
     public class SuggestionLogic : ISugggestionLogic
     {
         private readonly ILogger<SuggestionLogic> _logger;
+        private readonly IRepository _repo;
+        private VilleSuggereeDto villeSuggereeDto;
 
-        public SuggestionLogic(ILogger<SuggestionLogic> logger)
+        public SuggestionLogic(ILogger<SuggestionLogic> logger, IRepository repo)
         {
             _logger = logger;
+            _repo = repo;
+        }
+
+        public async Task<IEnumerable<Ville>> GetSuggestionsAsync(string q, float? latitude, float? longitude)
+        {
+            this.villeSuggereeDto = new VilleSuggereeDto();
+            this.villeSuggereeDto.Name = q;
+
+            if (latitude.HasValue && longitude.HasValue)
+            {
+                this.villeSuggereeDto.Latitude = latitude;
+                this.villeSuggereeDto.Longitude = longitude;
+            }
+
+            IEnumerable<Ville> villes = await _repo.GetAll();
+            foreach(var item in villes){
+                if (villeDto.Name.Contains(item.Name))
+                {
+                    var tester = "yes";
+                }
+            }
+
+            return villes;
         }
 
         public Task WriteMessage(string message)

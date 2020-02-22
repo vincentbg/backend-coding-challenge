@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoveoApiVbg.Data;
+using CoveoApiVbg.Interfaces;
 using CoveoApiVbg.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,28 +14,24 @@ namespace CoveoApiVbg.Controllers
     [ApiController]
     public class SuggestionsController : ControllerBase
     {
-        private IRepository suggestionsRepo;
+        private ISugggestionLogic suggestionLogic;
+        private VilleSuggereeDto villeSuggereeDto;
 
-        public SuggestionsController(IRepository suggestionsRepo)
+        public SuggestionsController(ISugggestionLogic suggestionLogic)
         {
-            this.suggestionsRepo = suggestionsRepo;
+            this.suggestionLogic = suggestionLogic;
         }
 
         [HttpGet]
         [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<Suggestion>>> Get(string q, float? latitude, float? longitude)
-        {
-            var rng = q;
+        { 
+         
+            IEnumerable<Ville> te = await this.suggestionLogic.GetSuggestionsAsync(q, latitude, longitude);
 
-            if (latitude.HasValue && longitude.HasValue)
-            {
-                rng += latitude.ToString();
-            }
-             List<Ville> suggestions = await suggestionsRepo.GetAll();
-           
-           
-            return Ok(suggestions);
+            return Ok(te);
 
         }
+
     }
 }

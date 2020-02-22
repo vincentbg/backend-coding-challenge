@@ -24,10 +24,7 @@ namespace CoveoApiVbg.Data
             villes = new List<Ville>();
             if (villes.Count <= 0)
             {
-                //suggestions = ReadFromExcel<List<Suggestion>>(@"G:\Source\CoveoTest\data\cities_canada-usa.tsv");
                 FillCitiesInMemoryFromExcelFile();
-               // suggestions.Add(new Suggestion { Id = 1, Latitude = 0, Longitude = 0, Name = "London", Score = 1 });
-                //suggestions.Add(new Suggestion { Id = 2, Latitude = 0, Longitude = 0, Name = "Quebec", Score = 0 });
             }
         }
 
