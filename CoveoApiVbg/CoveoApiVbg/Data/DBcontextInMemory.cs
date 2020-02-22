@@ -69,11 +69,6 @@ namespace CoveoApiVbg.Data
 
                         villes.Add(villePresente);
                     }
-                  
-
-                    //Get the content from cells A1 and B1 as string, in two different notations
-                    string valA1 = firstWorksheet.Cells["A1"].Value.ToString();
-                    string valB1 = firstWorksheet.Cells[2, 1].Value.ToString();
 
                     //Save your file
                     excelPackage.Save();

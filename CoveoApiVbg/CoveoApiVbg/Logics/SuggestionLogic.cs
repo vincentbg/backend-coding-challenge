@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CoveoApiVbg.Logics
 {
-    public class MyDependency : IMyDependency
+    public class SuggestionLogic : ISugggestionLogic
     {
-        private readonly ILogger<MyDependency> _logger;
+        private readonly ILogger<SuggestionLogic> _logger;
 
-        public MyDependency(ILogger<MyDependency> logger)
+        public SuggestionLogic(ILogger<SuggestionLogic> logger)
         {
             _logger = logger;
         }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CoveoApiVbg.Interfaces
 {
-    public interface IMyDependency
+    public interface ISugggestionLogic
     {
         public Task WriteMessage(string message);
 
