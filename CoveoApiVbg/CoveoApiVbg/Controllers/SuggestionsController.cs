@@ -15,7 +15,6 @@ namespace CoveoApiVbg.Controllers
     public class SuggestionsController : ControllerBase
     {
         private ISugggestionLogic suggestionLogic;
-        private VilleSuggereeDto villeSuggereeDto;
 
         public SuggestionsController(ISugggestionLogic suggestionLogic)
         {

@@ -33,7 +33,7 @@ namespace CoveoApiVbg
             services.AddScoped<IDBcontext, DBcontextInMemory>();
             services.AddScoped<IRepository, VillesRepository>();
             services.AddScoped<ISugggestionLogic, SuggestionLogic>();
-
+            services.AddScoped<ISuggestionFactory, SuggestionFactory>();
 
         }
 
