@@ -21,10 +21,12 @@ namespace CoveoApiVbg.Logics
             _repo = repo;
         }
 
-        public async Task<IEnumerable<Ville>> GetSuggestionsAsync(string q, float? latitude, float? longitude)
+        public async Task<IEnumerable<Suggestion>> GetSuggestionsAsync(string q, float? latitude, float? longitude)
         {
-            this.villeSuggereeDto = new VilleSuggereeDto();
-            this.villeSuggereeDto.Name = q;
+            this.villeSuggereeDto = new VilleSuggereeDto
+            {
+                Name = q
+            };
 
             if (latitude.HasValue && longitude.HasValue)
             {
@@ -33,14 +35,23 @@ namespace CoveoApiVbg.Logics
             }
 
             IEnumerable<Ville> villes = await _repo.GetAll();
-            foreach(var item in villes){
-                if (villeDto.Name.Contains(item.Name))
+            List<Suggestion> suggestions = new List<Suggestion>();
+            var comp = StringComparison.OrdinalIgnoreCase;
+
+            foreach (var item in villes){
+                if (item.Name.Contains(this.villeSuggereeDto.Name, comp) && !String.IsNullOrEmpty(item.Name) && this.villeSuggereeDto.Name.Length == item.Name.Length)
                 {
-                    var tester = "yes";
+                    suggestions.Add(new Suggestion { Id = item.Id, Name = item.Name + ", "+item.Tz + ", " + item.Country , Score = (float)0.9});
                 }
+                else if(item.Name.Contains(this.villeSuggereeDto.Name, comp) && !String.IsNullOrEmpty(item.Name) && this.villeSuggereeDto.Name.Length != item.Name.Length)
+                {
+                    suggestions.Add(new Suggestion { Id = item.Id, Name = item.Name + ", " + item.Tz + ", " + item.Country, Score = (float)0.6 });
+
+                }
+
             }
 
-            return villes;
+            return suggestions;
         }
 
         public Task WriteMessage(string message)

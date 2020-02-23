@@ -27,7 +27,7 @@ namespace CoveoApiVbg.Controllers
         public async Task<ActionResult<IEnumerable<Suggestion>>> Get(string q, float? latitude, float? longitude)
         { 
          
-            IEnumerable<Ville> te = await this.suggestionLogic.GetSuggestionsAsync(q, latitude, longitude);
+            IEnumerable<Suggestion> te = await this.suggestionLogic.GetSuggestionsAsync(q, latitude, longitude);
 
             return Ok(te);
 

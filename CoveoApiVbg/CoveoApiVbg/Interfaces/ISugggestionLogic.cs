@@ -11,7 +11,7 @@ namespace CoveoApiVbg.Interfaces
     {
         public Task WriteMessage(string msg);
 
-        public Task<IEnumerable<Ville>> GetSuggestionsAsync(string q, float? latitude, float ? longitude);
+        public Task<IEnumerable<Suggestion>> GetSuggestionsAsync(string q, float? latitude, float ? longitude);
 
 
 
