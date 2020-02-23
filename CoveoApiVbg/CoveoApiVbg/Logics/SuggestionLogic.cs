@@ -44,17 +44,17 @@ namespace CoveoApiVbg.Logics
             foreach (var item in villes){
                 if (item.Name.Contains(villeRecherchee, comp) && !String.IsNullOrEmpty(item.Name) && villeRecherchee.Length == item.Name.Length)
                 {
-                    suggestions.Add(new Suggestion { Id = item.Id, Name = item.Name + ", "+item.Tz + ", " + item.Country , Score = (float)0.9, Latitude = item.Latitude, Longitude = item.Longitude});
+                    suggestions.Add(_suggestionFactory.Create(item.Id, item.Name ,item.Tz , item.Country , (float)0.9, item.Latitude,  item.Longitude);
                 }
                 else if(item.Name.Contains(villeRecherchee, comp) && !String.IsNullOrEmpty(item.Name))
                 {
                     if(item.Name.Length - villeRecherchee.Length < 2)
                     {
-                        suggestions.Add(new Suggestion { Id = item.Id, Name = item.Name + ", " + item.Tz + ", " + item.Country, Score = (float)0.6, Latitude = item.Latitude, Longitude = item.Longitude });
+                        suggestions.Add(_suggestionFactory.Create(item.Id, item.Name, item.Tz, item.Country, (float)0.6, item.Latitude, item.Longitude);
                     }
                     else
                     {
-                        suggestions.Add(new Suggestion { Id = item.Id, Name = item.Name + ", " + item.Tz + ", " + item.Country, Score = (float)0.3, Latitude = item.Latitude, Longitude = item.Longitude });
+                        suggestions.Add(_suggestionFactory.Create(item.Id, item.Name, item.Tz, item.Country, (float)0.3, item.Latitude, item.Longitude);
                     }
                 }
 
