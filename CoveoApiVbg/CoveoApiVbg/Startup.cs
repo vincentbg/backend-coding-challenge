@@ -37,7 +37,7 @@ namespace CoveoApiVbg
             services.AddScoped<ISuggestionFactory, SuggestionFactory>();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Suggestions Api Vincent Boily Grant", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api de suggestions de villes correspondantes, par Vincent Boily Grant", Version = "v1" });
             });
         }
 
