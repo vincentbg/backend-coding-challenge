@@ -9,11 +9,6 @@ namespace CoveoApiVbg.Interfaces
 {
     public interface ISugggestionLogic
     {
-        public Task WriteMessage(string msg);
-
-        public Task<IEnumerable<Suggestion>> GetSuggestionsAsync(string q, float? latitude, float ? longitude);
-
-
-
+        public Task<IEnumerable<Suggestion>> GetSuggestionsAsync(string q, double? latitude, double? longitude);
     }
 }

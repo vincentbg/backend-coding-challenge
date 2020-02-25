@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace CoveoApiVbg.Helper
 {
-    public static class FloatExtension
+    public static class DoubleExtension
     {    
-        public static float ParseFloat(this string value)
+        public static double DoubleParse(this string value)
         {
          
-           return float.Parse(value, CultureInfo.InvariantCulture);
+           return double.Parse(value, CultureInfo.InvariantCulture);
         }
 
-        public static float? ParseNullableFloat(this string value)
+        public static double? ParseNullableDouble(this string value)
         {
             if (string.IsNullOrEmpty(value))
                 return null;
@@ -31,10 +31,10 @@ namespace CoveoApiVbg.Helper
 
                 if (temp.All(char.IsDigit))
                 {
-                    return value.ParseFloat();
+                    return value.DoubleParse();
                 }
             }
-            return float.MinValue;       
+            return double.MinValue;       
         }    
     }
 }

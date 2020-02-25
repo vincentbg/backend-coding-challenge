@@ -14,7 +14,7 @@ namespace CoveoApiVbg.Controllers
     [ApiController]
     public class SuggestionsController : ControllerBase
     {
-        private ISugggestionLogic suggestionLogic;
+        private readonly ISugggestionLogic suggestionLogic;
 
         public SuggestionsController(ISugggestionLogic suggestionLogic)
         {
@@ -23,12 +23,16 @@ namespace CoveoApiVbg.Controllers
 
         [HttpGet]
         [Produces("application/json")]
-        public async Task<ActionResult<IEnumerable<Suggestion>>> Get(string q, float? latitude, float? longitude)
-        { 
+        public async Task<ActionResult<IEnumerable<Suggestion>>> Get(string q, double? latitude, double? longitude)
+        {
+            if (string.IsNullOrEmpty(q))
+            {
+                return BadRequest();
+            }
          
-            IEnumerable<Suggestion> te = await this.suggestionLogic.GetSuggestionsAsync(q, latitude, longitude);
+            IEnumerable<Suggestion> suggestions = await this.suggestionLogic.GetSuggestionsAsync(q, latitude, longitude);
 
-            return Ok(te);
+            return Ok(suggestions);
 
         }
 

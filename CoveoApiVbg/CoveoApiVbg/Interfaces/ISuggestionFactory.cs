@@ -9,7 +9,7 @@ namespace CoveoApiVbg.Interfaces
 {
     public interface ISuggestionFactory
     {
-        public Suggestion Create(int id, string name, string tz, string country, float score, float latitude, float longitude);
+        public Suggestion Create(int id, string name, string tz, string country, float score, double latitude, double longitude);
     }
 
 }

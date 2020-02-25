@@ -59,8 +59,8 @@ namespace CoveoApiVbg.Data
                         villePresente.Id = firstWorksheet.Cells[i, 1].Value == null ?  0 :  firstWorksheet.Cells[i, 1].Value.ToString().ParseInt();
                         villePresente.Name = firstWorksheet.Cells[i, 2].Value == null ? string.Empty : firstWorksheet.Cells[i, 2].Value.ToString();
                         villePresente.Ascii = firstWorksheet.Cells[i, 3].Value == null ? string.Empty : firstWorksheet.Cells[i, 3].Value.ToString();
-                        villePresente.Latitude = firstWorksheet.Cells[i, 5].Value == null ? float.MinValue : (float)firstWorksheet.Cells[i, 5].Value.ToString().ParseNullableFloat();
-                        villePresente.Longitude = firstWorksheet.Cells[i, 6].Value == null ? float.MinValue : (float)firstWorksheet.Cells[i, 6].Value.ToString().ParseNullableFloat();
+                        villePresente.Latitude = firstWorksheet.Cells[i, 5].Value == null ? double.MinValue : (double)firstWorksheet.Cells[i, 5].Value.ToString().ParseNullableDouble();
+                        villePresente.Longitude = firstWorksheet.Cells[i, 6].Value == null ? double.MinValue : (double)firstWorksheet.Cells[i, 6].Value.ToString().ParseNullableDouble();
                         villePresente.Country = firstWorksheet.Cells[i, 9].Value == null ? string.Empty : firstWorksheet.Cells[i, 9].Value.ToString();
                         villePresente.Tz = firstWorksheet.Cells[i, 18].Value == null ? string.Empty : firstWorksheet.Cells[i, 18].Value.ToString();
 

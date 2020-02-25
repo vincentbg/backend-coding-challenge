@@ -10,9 +10,9 @@ namespace CoveoApiVbg.Logics
 {
     public class SuggestionFactory : ISuggestionFactory
     {
-        public Suggestion Create(int id, string name, string tz, string country, float score, float latitude, float longitude)
+        public Suggestion Create(int id, string name, string tz, string country, float score, double latitude, double longitude)
         {
-            return new Suggestion { Id = id, Name = name + ", " + tz + ", " + country, Score = (float)0.9, Latitude = latitude, Longitude = longitude };
+            return new Suggestion { Id = id, Name = name + ", " + tz + ", " + country, Score = score, Latitude = latitude, Longitude = longitude };
         }
     }
 }
